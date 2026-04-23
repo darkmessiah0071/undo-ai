@@ -1,0 +1,21 @@
+# Undo-Ai
+
+> Chrome Manifest V3 extension that rewrites pasted text in a natural human voice using on-device AI (Gemini Nano) with a rule-based fallback. Published on the Chrome Web Store by independent developer Julian Oosthuizen.
+
+Undo-Ai is a writing assistant for refining drafts in your own voice. It is not designed to misrepresent AI-generated work as human in contexts requiring disclosure (academic, regulatory, contractual).
+
+## Key pages
+
+- [Homepage](https://darkmessiah0071.github.io/undo-ai/index.html): Overview, features, pricing
+- [Privacy policy](https://darkmessiah0071.github.io/undo-ai/privacy.html): Full data handling policy
+
+## Key facts
+
+- Runs Chrome's built-in Gemini Nano Prompt API on-device when available
+- Falls back to a local rule-based rewrite engine when Gemini Nano is unavailable
+- No analytics, no telemetry, no remote text processing
+- Payment handled by ExtensionPay (third-party); text is never sent to ExtensionPay
+- Free tier: 1 rewrite per day, 1,500 character limit
+- Paid tiers: $6.99/month, $69.69/year, $420 lifetime
+- Review reward: 30 days of Monthly access for an honest 5-star review (honor system)
+- Source available under the GitHub account darkmessiah0071

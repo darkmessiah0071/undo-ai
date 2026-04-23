@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Undo-Ai</title>
+  <meta name="description" content="Privacy policy for the Undo-Ai Chrome extension.">
+  <meta name="theme-color" content="#5b21b6">
+  <link rel="canonical" href="https://darkmessiah0071.github.io/undo-ai/privacy.html">
+  <style>
+    :root { --brand: #5b21b6; --ink: #0f172a; --muted: #475569; --bg: #faf5ff; --line: #e9d5ff; }
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.7; margin: 0; }
+    .container { max-width: 780px; margin: 0 auto; padding: 48px 24px 80px; }
+    header { background: var(--brand); color: #fff; padding: 28px 0; margin-bottom: 48px; }
+    header .container { padding: 0 24px; max-width: 780px; }
+    header h1 { margin: 0; font-size: 1.75rem; }
+    header p { margin: 6px 0 0; opacity: 0.85; }
+    h2 { margin-top: 40px; font-size: 1.35rem; color: var(--brand); }
+    h3 { margin-top: 24px; font-size: 1.05rem; }
+    p, li { color: var(--ink); }
+    strong { color: var(--ink); }
+    a { color: var(--brand); }
+    .muted { color: var(--muted); font-size: 14px; }
+    .back { display: inline-block; margin-bottom: 24px; color: var(--brand); text-decoration: none; font-weight: 500; }
+    .back:hover { text-decoration: underline; }
+    code { background: var(--line); padding: 2px 6px; border-radius: 4px; font-size: 0.92em; }
+    hr { border: none; border-top: 1px solid var(--line); margin: 40px 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p>Undo-Ai Chrome Extension</p>
+    </div>
+  </header>
+
+  <div class="container">
+    <a class="back" href="index.html">← Back to Undo-Ai</a>
+
+    <p class="muted">Last updated: April 23, 2026</p>
+
+    <p>This privacy policy describes how the <strong>Undo-Ai</strong> Chrome extension ("the extension", "we", "our") handles information. Undo-Ai is published by Julian Oosthuizen as an independent developer.</p>
+
+    <h2>1. Summary</h2>
+    <p><strong>Undo-Ai does not collect, transmit, sell, or share your personal data or the text you rewrite.</strong> All text processing happens either on your device (via Chrome's built-in Gemini Nano AI) or through a local rule-based engine bundled with the extension. Your text never leaves your computer by virtue of using this extension.</p>
+    <p>The one exception is payment processing: if you purchase a paid plan, a third-party service (ExtensionPay) is used to verify your subscription status. ExtensionPay does not receive any of your rewritten text.</p>
+
+    <h2>2. What the extension stores locally</h2>
+    <p>The extension uses <code>chrome.storage.local</code> to store the following on your device only:</p>
+    <ul>
+      <li><strong>Usage counter</strong> — a per-day count of how many rewrites you've performed, used to enforce the free-tier daily limit. Resets at local midnight.</li>
+      <li><strong>Preferences</strong> — your default tone and imperfection settings, and whether you've dismissed the disclaimer.</li>
+      <li><strong>Rewrite history</strong> — the last 20 rewrites (input + output), stored locally so you can reference recent work. You can clear this at any time from the options page.</li>
+      <li><strong>Review reward status</strong> — whether you've claimed the free-month reward, and when that reward expires.</li>
+      <li><strong>Cached tier flag</strong> — a local cache of your current plan tier, so the popup can render instantly before re-verifying.</li>
+    </ul>
+    <p>This data never leaves your device. It is not synced to any server. Uninstalling the extension or clearing Chrome's extension storage removes all of it.</p>
+
+    <h2>3. Text processing</h2>
+    <p>When you click "Rewrite", the extension passes your pasted text to one of two engines:</p>
+    <ul>
+      <li><strong>Gemini Nano (preferred):</strong> Chrome's built-in on-device language model, accessed via the browser's Prompt API. This model runs locally on your machine. Your text is not sent to Google, Anthropic, or any other server.</li>
+      <li><strong>Rule-based fallback:</strong> A set of deterministic text transformations bundled inside the extension. Runs entirely in the popup's JavaScript context. No network involved.</li>
+    </ul>
+    <p>The extension does not contain any code that sends your rewritten text to a remote server. You can verify this by inspecting the extension's source (available on GitHub) or by watching network activity in Chrome DevTools while rewriting.</p>
+
+    <h2>4. Payment processing (ExtensionPay)</h2>
+    <p>Paid subscriptions are handled by <a href="https://extensionpay.com/" target="_blank" rel="noopener">ExtensionPay</a>, a third-party payment service built specifically for Chrome extensions. When you initiate a purchase or check your subscription status, the extension communicates with <code>extensionpay.com</code> over HTTPS.</p>
+    <p>ExtensionPay receives:</p>
+    <ul>
+      <li>A random anonymous user ID generated by ExtensionPay itself (not tied to your identity).</li>
+      <li>Your email address (only if you enter one to complete a purchase).</li>
+      <li>Payment details (handled by ExtensionPay's own payment processor — Stripe — never by this extension).</li>
+    </ul>
+    <p>ExtensionPay never receives the text you rewrite. Their privacy policy is available at <a href="https://extensionpay.com/privacy" target="_blank" rel="noopener">extensionpay.com/privacy</a>.</p>
+
+    <h2>5. Analytics and tracking</h2>
+    <p>The extension contains <strong>no analytics, telemetry, or tracking code</strong>. No Google Analytics. No error-reporting SDK. No event logging. We do not know how often you use the extension or what you rewrite.</p>
+
+    <h2>6. Permissions explained</h2>
+    <ul>
+      <li><code>storage</code> — to save your preferences, usage counter, and history locally.</li>
+      <li><code>alarms</code> — to keep the service worker alive during rewrites and to reset the daily counter at midnight.</li>
+      <li>Host permission for <code>https://extensionpay.com/*</code> — required by the ExtensionPay library to verify your subscription and launch checkout. No other hosts are contacted.</li>
+    </ul>
+
+    <h2>7. Review reward</h2>
+    <p>The "free month for an honest review" offer operates on an honor system. Clicking "Claim reward" inside the extension grants you 30 days of Monthly-tier access locally. We do not verify that you actually left a review, and we do not read Chrome Web Store review data. The reward can only be claimed once per installation.</p>
+
+    <h2>8. Children</h2>
+    <p>Undo-Ai is not directed at children under 13. We do not knowingly collect information from children.</p>
+
+    <h2>9. Changes to this policy</h2>
+    <p>If this policy changes in any material way, the updated version will be published at this URL with a new "last updated" date. Continued use of the extension after changes constitutes acceptance of the updated policy.</p>
+
+    <h2>10. Contact</h2>
+    <p>Questions, concerns, or data requests can be sent to: <a href="mailto:imdarkmessiah007@gmail.com">imdarkmessiah007@gmail.com</a></p>
+
+    <hr>
+
+    <p class="muted">This extension is an independent project. It is not affiliated with, endorsed by, or sponsored by Google, Anthropic, OpenAI, or any AI model provider.</p>
+  </div>
+</body>
+</html>
